@@ -30,7 +30,7 @@ A property management Android application built with Kotlin and Supabase.
 ## Screenshots
 
 ### Login
-(screenshot here)
+<img width="345" height="672" alt="login" src="https://github.com/user-attachments/assets/5f29e8bf-5de4-4cfb-af75-8fd2f9e7f393" />
 
 ### Register
 (screenshot here)
