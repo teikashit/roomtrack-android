@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unit Number"
+        android:textSize="13sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etDialogUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="e.g. 401"
+        android:inputType="text"
+        android:background="@drawable/input_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Rate (₱)"
+        android:textSize="13sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etDialogRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="e.g. 5000"
+        android:inputType="numberDecimal"
+        android:background="@drawable/input_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description (optional)"
+        android:textSize="13sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etDialogDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amenities, rules..."
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:background="@drawable/input_background"
+        android:padding="12dp" />
+
+</LinearLayout>
