@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Tenant Name" android:textSize="13sp" android:textColor="#64748B" android:layout_marginBottom="4dp" />
+    <EditText android:id="@+id/etDialogTenantName" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="e.g. John Doe"
+        android:inputType="textPersonName" android:padding="12dp"
+        android:background="@drawable/input_background" android:layout_marginBottom="16dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Room ID" android:textSize="13sp" android:textColor="#64748B" android:layout_marginBottom="4dp" />
+    <EditText android:id="@+id/etDialogRoomId" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="UUID of the room"
+        android:inputType="text" android:padding="12dp"
+        android:background="@drawable/input_background" android:layout_marginBottom="16dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Amount (₱)" android:textSize="13sp" android:textColor="#64748B" android:layout_marginBottom="4dp" />
+    <EditText android:id="@+id/etDialogAmount" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="e.g. 5000"
+        android:inputType="numberDecimal" android:padding="12dp"
+        android:background="@drawable/input_background" android:layout_marginBottom="16dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Due Date (YYYY-MM-DD)" android:textSize="13sp" android:textColor="#64748B" android:layout_marginBottom="4dp" />
+    <EditText android:id="@+id/etDialogDueDate" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="e.g. 2026-05-01"
+        android:inputType="text" android:padding="12dp"
+        android:background="@drawable/input_background" android:layout_marginBottom="16dp" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Description (optional)" android:textSize="13sp" android:textColor="#64748B" android:layout_marginBottom="4dp" />
+    <EditText android:id="@+id/etDialogDesc" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="e.g. May rent"
+        android:inputType="text" android:padding="12dp"
+        android:background="@drawable/input_background" />
+
+</LinearLayout>

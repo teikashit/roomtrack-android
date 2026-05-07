@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F1F5F9">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Back"
+            android:textSize="14sp"
+            android:textColor="#1E40AF"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pay Now"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressTint="#1E40AF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Amount Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1E40AF"
+                android:padding="24dp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AMOUNT DUE"
+                    android:textSize="12sp"
+                    android:textColor="#93C5FD"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₱0"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rent Payment"
+                    android:textSize="14sp"
+                    android:textColor="#BFDBFE" />
+            </LinearLayout>
+
+            <!-- Payment Method -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECT PAYMENT METHOD"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#94A3B8"
+                android:layout_marginBottom="12dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/radioGcash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💙 GCash"
+                    android:textSize="15sp"
+                    android:textColor="#0F172A"
+                    android:padding="16dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/radioMaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💚 Maya"
+                    android:textSize="15sp"
+                    android:textColor="#0F172A"
+                    android:padding="16dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/radioCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💳 Credit / Debit Card"
+                    android:textSize="15sp"
+                    android:textColor="#0F172A"
+                    android:padding="16dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/radioCash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💵 Cash"
+                    android:textSize="15sp"
+                    android:textColor="#0F172A"
+                    android:padding="16dp"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+            </RadioGroup>
+
+            <!-- GCash / Maya Fields -->
+            <LinearLayout
+                android:id="@+id/layoutGcashMaya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:textSize="13sp"
+                    android:textColor="#64748B"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. 09123456789"
+                    android:inputType="phone"
+                    android:padding="12dp"
+                    android:background="@drawable/input_background" />
+            </LinearLayout>
+
+            <!-- Card Fields -->
+            <LinearLayout
+                android:id="@+id/layoutCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card Number"
+                    android:textSize="13sp"
+                    android:textColor="#64748B"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/etCardNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="1234 5678 9012 3456"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:padding="12dp"
+                    android:background="@drawable/input_background"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Expiry (MM/YY)"
+                            android:textSize="13sp"
+                            android:textColor="#64748B"
+                            android:layout_marginBottom="4dp" />
+                        <EditText
+                            android:id="@+id/etCardExpiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="MM/YY"
+                            android:inputType="text"
+                            android:maxLength="5"
+                            android:padding="12dp"
+                            android:background="@drawable/input_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CVV"
+                            android:textSize="13sp"
+                            android:textColor="#64748B"
+                            android:layout_marginBottom="4dp" />
+                        <EditText
+                            android:id="@+id/etCardCvv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="123"
+                            android:inputType="numberPassword"
+                            android:maxLength="3"
+                            android:padding="12dp"
+                            android:background="@drawable/input_background" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Cash Info -->
+            <LinearLayout
+                android:id="@+id/layoutCash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💵 Cash Payment Instructions"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F172A"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. Tap Confirm below to notify your landlord\n2. Prepare the exact amount in cash\n3. Hand it to your landlord in person\n4. Your landlord will confirm receipt"
+                    android:textSize="13sp"
+                    android:textColor="#64748B"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+
+            <!-- Confirm Button -->
+            <Button
+                android:id="@+id/btnConfirmPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirm Payment"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1E40AF"
+                android:padding="16dp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

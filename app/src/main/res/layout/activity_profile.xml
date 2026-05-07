@@ -36,7 +36,7 @@
                 android:textColor="#0F172A" />
         </LinearLayout>
 
-        <!-- Avatar -->
+        <!-- Avatar Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,15 +44,37 @@
             android:gravity="center"
             android:layout_marginBottom="24dp">
 
+            <!-- Profile Photo (shown when photo exists) -->
+            <ImageView
+                android:id="@+id/ivProfilePhoto"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/avatar_background"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Initials fallback (shown when no photo) -->
             <TextView
                 android:id="@+id/tvAvatarInitials"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:gravity="center"
                 android:background="@drawable/avatar_background"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textSize="28sp"
+                android:textSize="32sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Change Photo link -->
+            <TextView
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📷 Change Photo"
+                android:textSize="13sp"
+                android:textColor="#1E40AF"
+                android:padding="4dp"
                 android:layout_marginBottom="12dp" />
 
             <TextView
@@ -76,7 +98,7 @@
                 android:id="@+id/tvProfileRole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="landlord"
+                android:text="Tenant"
                 android:textSize="12sp"
                 android:textColor="#1E3A8A"
                 android:textStyle="bold"
@@ -107,7 +129,6 @@
                     android:textColor="#0F172A"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Full Name -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,7 +148,6 @@
                     android:padding="12dp"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Phone -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,7 +167,6 @@
                     android:padding="12dp"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Address -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -166,16 +185,6 @@
                     android:background="@drawable/input_background"
                     android:padding="12dp"
                     android:layout_marginBottom="16dp" />
-
-                <!-- Error/Success -->
-                <TextView
-                    android:id="@+id/tvProfileMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="13sp"
-                    android:visibility="gone"
-                    android:layout_marginBottom="12dp" />
 
                 <Button
                     android:id="@+id/btnSaveProfile"
@@ -256,15 +265,6 @@
                     android:background="@drawable/input_background"
                     android:padding="12dp"
                     android:layout_marginBottom="16dp" />
-
-                <TextView
-                    android:id="@+id/tvPasswordMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="13sp"
-                    android:visibility="gone"
-                    android:layout_marginBottom="12dp" />
 
                 <Button
                     android:id="@+id/btnChangePassword"

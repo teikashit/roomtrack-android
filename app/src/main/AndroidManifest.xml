@@ -31,6 +31,9 @@
         <activity android:name=".screens.dashboard.DashboardActivity" />
         <activity android:name=".screens.profile.ProfileActivity" />
         <activity android:name=".screens.rooms.RoomsActivity" />
+        <activity android:name=".screens.payments.PaymentActivity" />
+        <activity android:name=".screens.announcements.AnnouncementActivity" />
+        <activity android:name=".screens.checkout.CheckoutActivity" />
     </application>
 
 </manifest>

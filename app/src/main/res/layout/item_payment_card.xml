@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:layout_marginBottom="12dp">
 
-    <!-- Unit number + status -->
+    <!-- Amount + Status -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,20 +16,20 @@
         android:layout_marginBottom="8dp">
 
         <TextView
-            android:id="@+id/tvCardUnit"
+            android:id="@+id/tvCardAmount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Unit 101"
-            android:textSize="17sp"
+            android:text="₱0"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:textColor="#1E40AF" />
 
         <TextView
             android:id="@+id/tvCardStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vacant"
+            android:text="Pending"
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="#F59E0B" />
@@ -41,34 +41,12 @@
         android:background="#F1F5F9"
         android:layout_marginBottom="10dp" />
 
-    <!-- Rate -->
+    <!-- Tenant name -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="6dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monthly Rate  "
-            android:textSize="13sp"
-            android:textColor="#64748B" />
-        <TextView
-            android:id="@+id/tvCardRate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="₱0/mo"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:textColor="#0F172A" />
-    </LinearLayout>
-
-    <!-- Tenant — tappable -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,25 +54,65 @@
             android:textSize="13sp"
             android:textColor="#64748B" />
         <TextView
-            android:id="@+id/tvCardTenant"
+            android:id="@+id/tvCardTenantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Unassigned"
+            android:text="—"
             android:textSize="13sp"
-            android:textColor="#94A3B8"
-            android:padding="2dp" />
+            android:textColor="#334155" />
     </LinearLayout>
 
-    <!-- Assign / Unassign button -->
-    <Button
-        android:id="@+id/btnAssign"
+    <!-- Due date -->
+    <TextView
+        android:id="@+id/tvCardDueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Assign Tenant"
+        android:text="Due: —"
+        android:textSize="13sp"
+        android:textColor="#64748B"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Paid date -->
+    <TextView
+        android:id="@+id/tvPaidDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid on: —"
+        android:textSize="13sp"
+        android:textColor="#10B981"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/tvCardDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="—"
+        android:textSize="13sp"
+        android:textColor="#94A3B8"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Mark as Paid / Confirm Cash (landlord) -->
+    <Button
+        android:id="@+id/btnMarkPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mark as Paid"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#10B981"
+        android:visibility="gone" />
+
+    <!-- Pay Now (tenant) -->
+    <Button
+        android:id="@+id/btnPayNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay Now"
         android:textSize="12sp"
         android:textColor="#FFFFFF"
         android:backgroundTint="#1E40AF"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp" />
+        android:visibility="gone" />
 
 </LinearLayout>

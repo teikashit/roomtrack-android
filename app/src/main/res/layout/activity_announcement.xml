@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F1F5F9">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🏠 RoomTrack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A" />
+
+        <TextView
+            android:id="@+id/tvRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#1E3A8A"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/tvInitials"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/avatar_background"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressTint="#1E40AF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Announcements"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F172A" />
+
+                <Button
+                    android:id="@+id/btnPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ Post"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#1E40AF"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- No announcements message -->
+            <TextView
+                android:id="@+id/tvNoAnnouncements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No announcements yet."
+                android:textSize="14sp"
+                android:textColor="#64748B"
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone" />
+
+            <!-- Announcements container -->
+            <LinearLayout
+                android:id="@+id/containerAnnouncements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:elevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HOME" android:textSize="9sp" android:textColor="#94A3B8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navRooms"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔑" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ROOMS" android:textSize="9sp" android:textColor="#94A3B8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navPayments"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💳" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PAYMENTS" android:textSize="9sp" android:textColor="#94A3B8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navAnnouncements"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📢" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NEWS" android:textSize="9sp" android:textStyle="bold" android:textColor="#1E40AF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👤" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PROFILE" android:textSize="9sp" android:textColor="#94A3B8" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

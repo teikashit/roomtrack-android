@@ -13,6 +13,13 @@ interface ProfileApiService {
         @Query("select") select: String = "*"
     ): Response<List<ProfileResponse>>
 
+    @GET("rest/v1/profiles")
+    suspend fun getTenants(
+        @Header("Authorization") token: String,
+        @Query("role") role: String = "eq.tenant",
+        @Query("select") select: String = "id,full_name,phone"
+    ): Response<List<ProfileResponse>>
+
     @POST("rest/v1/profiles")
     suspend fun upsertProfile(
         @Header("Authorization") token: String,

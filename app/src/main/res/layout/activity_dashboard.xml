@@ -27,7 +27,6 @@
             android:id="@+id/tvRole"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LANDLORD"
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="#1E3A8A"
@@ -88,73 +87,83 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:padding="20dp">
 
+                    <!-- Stat 1 -->
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvStatLabel1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:text="LOADING..."
+                            android:textSize="11sp"
+                            android:textColor="#94A3B8" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TOTAL INCOME"
-                                android:textSize="11sp"
-                                android:textColor="#94A3B8" />
-
-                            <TextView
-                                android:id="@+id/tvTotalIncome"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$24,500"
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                android:textColor="#0F172A" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvStatValue1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="OVERDUE"
-                                android:textSize="11sp"
-                                android:textColor="#94A3B8" />
-
-                            <TextView
-                                android:id="@+id/tvOverdue"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$1,350"
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                android:textColor="#DC2626" />
-                        </LinearLayout>
+                            android:text="—"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#0F172A" />
                     </LinearLayout>
+
+                    <!-- Stat 2 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvStatLabel2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LOADING..."
+                            android:textSize="11sp"
+                            android:textColor="#94A3B8" />
+
+                        <TextView
+                            android:id="@+id/tvStatValue2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#DC2626" />
+                    </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Announcements -->
+            <!-- Announcements header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ANNOUNCEMENTS"
+                android:text="LATEST ANNOUNCEMENT"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#94A3B8"
                 android:layout_marginBottom="12dp" />
 
+            <!-- No announcement message -->
+            <TextView
+                android:id="@+id/tvNoAnnouncement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No announcements yet."
+                android:textSize="13sp"
+                android:textColor="#94A3B8"
+                android:visibility="gone" />
+
+            <!-- Announcement card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,10 +172,12 @@
                 app:cardElevation="2dp">
 
                 <LinearLayout
+                    android:id="@+id/layoutAnnouncement"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:visibility="gone">
 
                     <View
                         android:layout_width="4dp"
@@ -180,22 +191,25 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAnnouncementTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Elevator Maintenance"
+                            android:text=""
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="#0F172A" />
 
                         <TextView
+                            android:id="@+id/tvAnnouncementContent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="System upgrade on Feb 10th. Use Service Stairs."
+                            android:text=""
                             android:textSize="13sp"
                             android:textColor="#64748B" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 
@@ -214,20 +228,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🏠"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HOME"
-                android:textSize="10sp"
-                android:textColor="#1E3A8A"
-                android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="20sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HOME" android:textSize="10sp" android:textColor="#1E3A8A" android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -237,19 +239,8 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🔑"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ROOMS"
-                android:textSize="10sp"
-                android:textColor="#94A3B8" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔑" android:textSize="20sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ROOMS" android:textSize="10sp" android:textColor="#94A3B8" />
         </LinearLayout>
 
         <LinearLayout
@@ -259,19 +250,19 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💳" android:textSize="20sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PAYMENTS" android:textSize="10sp" android:textColor="#94A3B8" />
+        </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="💳"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PAYMENTS"
-                android:textSize="10sp"
-                android:textColor="#94A3B8" />
+        <LinearLayout
+            android:id="@+id/navAnnouncements"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📢" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NEWS" android:textSize="9sp" android:textColor="#94A3B8" />
         </LinearLayout>
 
         <LinearLayout
@@ -281,19 +272,9 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="👤"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PROFILE"
-                android:textSize="10sp"
-                android:textColor="#94A3B8" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👤" android:textSize="20sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PROFILE" android:textSize="10sp" android:textColor="#94A3B8" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
