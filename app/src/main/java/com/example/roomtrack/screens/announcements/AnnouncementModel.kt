@@ -5,10 +5,11 @@ import com.example.roomtrack.model.AnnouncementRequest
 import com.example.roomtrack.model.AnnouncementResponse
 import retrofit2.Response
 
+
 class AnnouncementModel {
 
     suspend fun getAllAnnouncements(token: String): Response<List<AnnouncementResponse>> {
-        return RetrofitClient.announcementService.getAllAnnouncements(token)
+        return RetrofitClient.announcementService.getAllAnnouncements()
     }
 
     suspend fun createAnnouncement(
@@ -24,10 +25,11 @@ class AnnouncementModel {
             landlord_id = landlordId,
             landlord_name = landlordName
         )
-        return RetrofitClient.announcementService.createAnnouncement(token, request = request)
+        return RetrofitClient.announcementService.createAnnouncement(request = request)
     }
 
     suspend fun deleteAnnouncement(token: String, announcementId: String): Response<Void> {
-        return RetrofitClient.announcementService.deleteAnnouncement(token, "eq.$announcementId")
+        // Spring Boot uses a path variable, not a query param
+        return RetrofitClient.announcementService.deleteAnnouncement(id = announcementId)
     }
 }

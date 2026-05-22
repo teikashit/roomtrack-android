@@ -1,15 +1,15 @@
 package com.example.roomtrack.api
 
+import com.example.roomtrack.app.RoomTrackApp
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
-    private const val BASE_URL = "https://lajmclxicnpxcfkucwsz.supabase.co/"
-    private const val API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxham1jbHhpY25weGNma3Vjd3N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MDc4MzIsImV4cCI6MjA4ODM4MzgzMn0.bZvSrJT7iciSxHZbn-YCiJHXzTs0r6EnSzY2GUiof2Y"
 
-    fun getApiKey() = API_KEY
+object RetrofitClient {
+
+    private const val BASE_URL = "https://roomtrack-backend.onrender.com/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -18,11 +18,16 @@ object RetrofitClient {
     private val client = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
         .addInterceptor { chain ->
-            val request = chain.request().newBuilder()
-                .addHeader("apikey", API_KEY)
+            val requestBuilder = chain.request().newBuilder()
                 .addHeader("Content-Type", "application/json")
-                .build()
-            chain.proceed(request)
+
+            // Attach Bearer token from RoomTrackApp if user is logged in
+            val token = RoomTrackApp.getInstance().getToken()
+            if (token.isNotEmpty()) {
+                requestBuilder.addHeader("Authorization", token)
+            }
+
+            chain.proceed(requestBuilder.build())
         }
         .build()
 
@@ -36,5 +41,5 @@ object RetrofitClient {
     val profileService: ProfileApiService = retrofit.create(ProfileApiService::class.java)
     val roomService: RoomApiService = retrofit.create(RoomApiService::class.java)
     val paymentService: PaymentApiService = retrofit.create(PaymentApiService::class.java)
-    val announcementService: AnnouncementApiService = retrofit.create(AnnouncementApiService::class.java)  // NEW
+    val announcementService: AnnouncementApiService = retrofit.create(AnnouncementApiService::class.java)
 }

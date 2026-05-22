@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class ProfilePresenter(
     private val view: ProfileContract.View,
     private val model: ProfileModel
@@ -27,8 +28,9 @@ class ProfilePresenter(
                 val response = model.getProfile(token, session.id)
                 withContext(Dispatchers.Main) {
                     view.hideLoading()
-                    if (response.isSuccessful && !response.body().isNullOrEmpty()) {
-                        val profile = response.body()!![0]
+                    if (response.isSuccessful && response.body() != null) {
+                        // Spring Boot returns a single object, not a list
+                        val profile = response.body()!!
                         currentPhotoUrl = profile.photo_url
                         view.populateProfile(
                             name = profile.full_name ?: session.name,
@@ -39,6 +41,7 @@ class ProfilePresenter(
                             photoUrl = profile.photo_url
                         )
                     } else {
+                        // Profile not yet created — show session defaults
                         view.populateProfile(
                             name = session.name,
                             email = session.email,
@@ -78,11 +81,11 @@ class ProfilePresenter(
                     role = session.role,
                     photo_url = currentPhotoUrl
                 )
+                // Spring Boot only needs one call — no separate metadata update needed
                 val profileResponse = model.updateProfile(token, request)
-                val metaResponse = model.updateMetadata(token, fullName)
                 withContext(Dispatchers.Main) {
                     view.hideLoading()
-                    if (profileResponse.isSuccessful && metaResponse.isSuccessful) {
+                    if (profileResponse.isSuccessful) {
                         view.showSuccess("Profile updated successfully")
                     } else {
                         view.showError("Failed to update profile")
@@ -105,10 +108,12 @@ class ProfilePresenter(
         view.showLoading()
         CoroutineScope(Dispatchers.IO).launch {
             try {
+                // Step 1: Upload photo to Supabase Storage (kept as-is)
                 val photoUrl = model.uploadPhoto(token, session.id, imageBytes, fileName)
                 if (photoUrl != null) {
                     currentPhotoUrl = photoUrl
-                    // Save URL to profiles table
+
+                    // Step 2: Save the new photo URL to Spring Boot
                     val request = UpdateProfileRequest(
                         id = session.id,
                         full_name = session.name,
@@ -118,6 +123,7 @@ class ProfilePresenter(
                         photo_url = photoUrl
                     )
                     model.updateProfile(token, request)
+
                     withContext(Dispatchers.Main) {
                         view.hideLoading()
                         view.showSuccess("Photo updated!")
@@ -164,6 +170,7 @@ class ProfilePresenter(
         view.showLoading()
         CoroutineScope(Dispatchers.IO).launch {
             try {
+                // Spring Boot identifies the user from the JWT Bearer token
                 val response = model.changePassword(token, newPassword)
                 withContext(Dispatchers.Main) {
                     view.hideLoading()

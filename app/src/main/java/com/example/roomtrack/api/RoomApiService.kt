@@ -6,42 +6,35 @@ import com.example.roomtrack.model.RoomResponse
 import retrofit2.Response
 import retrofit2.http.*
 
+
 interface RoomApiService {
 
-    @GET("rest/v1/rooms")
-    suspend fun getRooms(
-        @Header("Authorization") token: String,
-        @Query("select") select: String = "*",
-        @Query("order") order: String = "unit_name.asc"
-    ): Response<List<RoomResponse>>
 
-    @GET("rest/v1/rooms")
+    @GET("rooms")
+    suspend fun getRooms(): Response<List<RoomResponse>>
+
+
+    @GET("rooms/tenant/{tenantId}")
     suspend fun getRoomByTenantId(
-        @Header("Authorization") token: String,
-        @Query("tenant_id") tenantId: String,
-        @Query("select") select: String = "*"
+        @Path("tenantId") tenantId: String
     ): Response<List<RoomResponse>>
 
-    @POST("rest/v1/rooms")
+
+    @POST("rooms")
     suspend fun createRoom(
-        @Header("Authorization") token: String,
-        @Header("Prefer") prefer: String = "return=representation",
         @Body request: RoomRequest
     ): Response<List<RoomResponse>>
 
-    @PATCH("rest/v1/rooms")
-    suspend fun updateRoom(
-        @Header("Authorization") token: String,
-        @Header("Prefer") prefer: String = "return=minimal",
-        @Query("id") id: String,
-        @Body request: RoomRequest
+
+    @PATCH("rooms/{id}/assign")
+    suspend fun assignTenant(
+        @Path("id") id: String,
+        @Body request: AssignTenantRequest
     ): Response<Void>
 
-    @PATCH("rest/v1/rooms")
-    suspend fun assignTenant(
-        @Header("Authorization") token: String,
-        @Header("Prefer") prefer: String = "return=minimal",
-        @Query("id") id: String,
-        @Body request: AssignTenantRequest
+
+    @PATCH("rooms/{id}/unassign")
+    suspend fun unassignTenant(
+        @Path("id") id: String
     ): Response<Void>
 }

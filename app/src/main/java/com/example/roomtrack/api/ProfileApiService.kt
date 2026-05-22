@@ -4,27 +4,28 @@ import com.example.roomtrack.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
+
 interface ProfileApiService {
 
-    @GET("rest/v1/profiles")
+
+    @GET("profiles/{id}")
     suspend fun getProfile(
-        @Header("Authorization") token: String,
-        @Query("id") id: String,
-        @Query("select") select: String = "*"
-    ): Response<List<ProfileResponse>>
+        @Path("id") id: String
+    ): Response<ProfileResponse>
 
-    @GET("rest/v1/profiles")
-    suspend fun getTenants(
-        @Header("Authorization") token: String,
-        @Query("role") role: String = "eq.tenant",
-        @Query("select") select: String = "id,full_name,phone"
-    ): Response<List<ProfileResponse>>
 
-    @POST("rest/v1/profiles")
+    @GET("profiles/tenants")
+    suspend fun getTenants(): Response<List<ProfileResponse>>
+
+
+    @POST("profiles")
     suspend fun upsertProfile(
-        @Header("Authorization") token: String,
-        @Header("Prefer") prefer: String = "resolution=merge-duplicates,return=minimal",
-        @Header("Content-Type") contentType: String = "application/json",
         @Body request: UpdateProfileRequest
+    ): Response<Void>
+
+
+    @PUT("profiles/password")
+    suspend fun updatePassword(
+        @Body request: UpdatePasswordRequest
     ): Response<Void>
 }

@@ -7,22 +7,23 @@ import com.example.roomtrack.model.ProfileResponse
 import com.example.roomtrack.model.RoomResponse
 import retrofit2.Response
 
+
 class PaymentModel {
 
     suspend fun getAllPayments(token: String): Response<List<PaymentResponse>> {
-        return RetrofitClient.paymentService.getAllPayments(token)
+        return RetrofitClient.paymentService.getAllPayments()
     }
 
     suspend fun getPaymentsByTenant(token: String, tenantId: String): Response<List<PaymentResponse>> {
-        return RetrofitClient.paymentService.getPaymentsByTenant(token, "eq.$tenantId")
+        return RetrofitClient.paymentService.getPaymentsByTenant(tenantId)
     }
 
     suspend fun getTenants(token: String): Response<List<ProfileResponse>> {
-        return RetrofitClient.profileService.getTenants(token)
+        return RetrofitClient.profileService.getTenants()
     }
 
     suspend fun getRoomByTenantId(token: String, tenantId: String): Response<List<RoomResponse>> {
-        return RetrofitClient.roomService.getRoomByTenantId(token, "eq.$tenantId")
+        return RetrofitClient.roomService.getRoomByTenantId(tenantId)
     }
 
     suspend fun createPayment(
@@ -43,16 +44,17 @@ class PaymentModel {
             due_date = dueDate,
             description = description
         )
-        return RetrofitClient.paymentService.createPayment(token, request = request)
+        return RetrofitClient.paymentService.createPayment(request = request)
     }
 
+
     suspend fun markAsPaid(token: String, paymentId: String, paidDate: String): Response<Void> {
-        val body = mapOf("status" to "Paid", "paid_date" to paidDate)
-        return RetrofitClient.paymentService.markAsPaid(token, id = "eq.$paymentId", body = body)
+        val body = mapOf("status" to "Paid")
+        return RetrofitClient.paymentService.updateStatus(id = paymentId, body = body)
     }
 
     suspend fun updateStatus(token: String, paymentId: String, status: String): Response<Void> {
         val body = mapOf("status" to status)
-        return RetrofitClient.paymentService.updateStatus(token, id = "eq.$paymentId", body = body)
+        return RetrofitClient.paymentService.updateStatus(id = paymentId, body = body)
     }
 }
